@@ -25,7 +25,7 @@ mutation {
   createCharacter(name: "Chandler Bing", nickname: "Ringo", occupation: "Advertising Copywriter", birthday: "1968-04-08", seriesId: 1) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -35,7 +35,7 @@ mutation {
   createCharacter(name: "Rachel Karen Greene", nickname: "Rach", occupation: "Executive", birthday: "1969-05-05", seriesId: 1) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -45,7 +45,7 @@ mutation {
   createCharacter(name: "Ross Geller", nickname: "Rossie", occupation: "Paleontologist", birthday: "1967-10-18", seriesId: 1) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -55,7 +55,7 @@ mutation {
   createCharacter(name: "Phoebe Buffay", nickname: "Pheebs", occupation: "Masseuse", birthday: "1966-02-16", seriesId: 1) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -65,7 +65,7 @@ mutation {
   createCharacter(name: "Joey Tribbiani", nickname: "Joe", occupation: "Actor", birthday: "1968-12-01", seriesId: 1) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -75,7 +75,7 @@ mutation {
   createCharacter(name: "Homer Simpson", nickname: "Hommie", occupation: "Safety Inspector", birthday: "1970-01-01", seriesId: 2) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -85,7 +85,7 @@ mutation {
   createCharacter(name: "Marjorie Jacqueline Simpson", nickname: "Marge", occupation: "Housewife", birthday: "1970-01-01", seriesId: 2) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -95,7 +95,7 @@ mutation {
   createCharacter(name: "Bartholomew JoJo Simpson", nickname: "Bart", occupation: "Student", birthday: "1990-01-01", seriesId: 2) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -105,7 +105,7 @@ mutation {
   createCharacter(name: "Lisa Marie Simpson", nickname: "Lisa", occupation: "Student", birthday: "1991-01-01", seriesId: 2) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -115,7 +115,7 @@ mutation {
   createCharacter(name: "Margaret Evelyn Simpson", nickname: "Maggie", occupation: "None", birthday: "1995-01-01", seriesId: 2) {
     id,
     name,
-    series {
+    restaurante {
       name
     }
   }
@@ -124,7 +124,7 @@ mutation {
 
 // ** Querying Series Characters
 
-// all the series
+// all the restaurante
 query {
   allSeries {
     id
@@ -138,14 +138,14 @@ query {
   characters {
     name,
     nickname,
-    series {
+    restaurante {
       name
     }
   }
 }
 
 query {
-  series(id: 1) {
+  restaurante(id: 1) {
     id
     name
   }
@@ -156,7 +156,7 @@ query {
     id
     name
     nickname
-    series {
+    restaurante {
       name
     }
   }

@@ -1,27 +1,67 @@
-type Series {
+type Usuario {
 	id: ID!,
-	name: String,
-	nrOfSeasons: Int
+	nombre: String,
+	email: String,
+	contrasena: String,
+	restaurante: Boolean,
+	imagen: String,
+	reservas: [Reserva]
 }
 
-type SeriesCharacter {
+type Restaurante {
 	id: ID!,
-	name: String,
-	nickname: String,
-	occupation: String,
-	dateofbirth: String,
-	series: Series
+	mesas: [Mesa],
+	reservas: [Reserva],
+	nombre: String,
+	direccion: String,
+	telefono: String,
+	imagen: String
 }
 
+type Reserva {
+	id: ID!,
+	usuario: Usuario,
+	mesa: Mesa,
+	restaurante: Restaurante,
+	nombre: String,
+	fecha: String,
+	fechacreacion: String,
+	tipo: String,
+	aceptada: Boolean
+
+}
+
+type Mesa {
+	id: ID!,
+	nmesa: Int,
+	comensales: Int,
+	imagen: String,
+	restaurante: Restaurante,
+}
 
 type Query {
-	characters:[SeriesCharacter]
-	character(id: ID):SeriesCharacter
-	allSeries:[Series]
-	series(id: ID):Series
+	restaurantes:[Restaurante]
+	restaurante(id: ID!):Restaurante
+
+	usuarioPorNombre(nombre:String!):Usuario
+	usuario(id: ID!):Usuario
+
+	reservasPorUsuario(id_usuario: ID!): [Reserva]
+	reservasPorRestaurante(id_restaurante: ID!): [Reserva]
+
+	mesasPorRestaurante(id_restaurante: ID!): [Mesa]
 }
 
 type Mutation {
-	createSeries(name: String!, nrOfSeasons: Int!):Series
-	createCharacter(name: String!, nickname: String!, occupation: String; birthday: String, seriesId: Int):SeriesCharacter
+	createUsuario(nombre: String!,email: String!,contrasena: String!,imagen: String):Usuario
+	deleteUsuario(id: ID!):Boolean
+	updateUsuario(nombre: String,email: String,contrasena: String,imagen: String):Usuario
+
+	createReserva(id_usuario: ID!,id_mesa: ID!,id_restaurante: ID!,fecha: String!,tipo: String!): Reserva
+	deleteReserva(id: ID!): Boolean
+	updateReserva(id: ID!, tipo: String!): Reserva
+
+	createMesa(id_restaurante: ID!, nmesa: Int!, comensales: Int, imagen: String): Mesa
+	deleteMesa(id: ID!): Boolean
+	updateMesa(id: ID!, nmesa: Int, comensales: Int, imagen: String): Mesa
 }
