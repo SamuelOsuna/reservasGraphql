@@ -1,4 +1,4 @@
-package com.tiagoamp.demographql.model;
+package com.samuel.reservasServidorGraphql.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class SeriesCharacter implements Serializable {
+public class Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -34,13 +34,13 @@ public class SeriesCharacter implements Serializable {
     private LocalDate dateofbirth;
     
     @ManyToOne
-    @JoinColumn(name = "id_series", nullable = false, updatable = false)
-    private Series series;
+    @JoinColumn(name = "id_restaurante", nullable = false, updatable = false)
+    private Restaurante restaurante;
 
     
-    public SeriesCharacter() {}    
+    public Usuario() {}
     
-    public SeriesCharacter(String name, String nickname, String occupation, LocalDate dateofbirth) {
+    public Usuario(String name, String nickname, String occupation, LocalDate dateofbirth) {
 		this.name = name;
 		this.nickname = nickname;
 		this.occupation = occupation;
@@ -50,8 +50,8 @@ public class SeriesCharacter implements Serializable {
     
 	@Override
     public boolean equals(Object obj) {
-    	if (!(obj instanceof SeriesCharacter)) return false;
-    	SeriesCharacter other = (SeriesCharacter) obj;
+    	if (!(obj instanceof Usuario)) return false;
+    	Usuario other = (Usuario) obj;
     	return this.name.equals(other.name);
     }
     
@@ -91,11 +91,11 @@ public class SeriesCharacter implements Serializable {
 	public void setDateofbirth(LocalDate dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-	public void setSeries(Series series) {
-		this.series = series;
+	public void setSeries(Restaurante restaurante) {
+		this.restaurante = restaurante;
 	}
-	public Series getSeries() {
-		return series;
+	public Restaurante getSeries() {
+		return restaurante;
 	}
     
 }
