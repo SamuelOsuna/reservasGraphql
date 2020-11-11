@@ -2,14 +2,9 @@ package com.samuel.reservasServidorGraphql.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Usuario implements Serializable {
@@ -17,85 +12,109 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
     
-    @Column(name = "nickname", nullable = false)
-    private String nickname;
+    @Column(name = "email", nullable = false)
+    private String email;
     
-    @Column(name = "occupation", nullable = false)
-    private String occupation;
+    @Column(name = "contrasena", nullable = false)
+    private String contrasena;
     
-    @Column(name = "birthday")
-    private LocalDate dateofbirth;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_restaurante", nullable = false, updatable = false)
-    private Restaurante restaurante;
+    @Column(name = "restaurante")
+    private boolean restaurante;
 
-    
-    public Usuario() {}
-    
-    public Usuario(String name, String nickname, String occupation, LocalDate dateofbirth) {
-		this.name = name;
-		this.nickname = nickname;
-		this.occupation = occupation;
-		this.dateofbirth = dateofbirth;
+	@Column(name = "imagen")
+	private String imagen;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<Reserva> reservas;
+
+	public Usuario() {
 	}
 
-    
-	@Override
-    public boolean equals(Object obj) {
-    	if (!(obj instanceof Usuario)) return false;
-    	Usuario other = (Usuario) obj;
-    	return this.name.equals(other.name);
-    }
-    
-    @Override
-    public int hashCode() {
-    	return name.length();
-    }
-    
-    
+	public Usuario(String nombre, String email, String contrasena, boolean restaurante, String imagen) {
+		this.nombre = nombre;
+		this.email = email;
+		this.contrasena = contrasena;
+		this.restaurante = restaurante;
+		this.imagen = imagen;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public String getNombre() {
+		return nombre;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getNickname() {
-		return nickname;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getOccupation() {
-		return occupation;
+
+	public String getContrasena() {
+		return contrasena;
 	}
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
-	public LocalDate getDateofbirth() {
-		return dateofbirth;
-	}
-	public void setDateofbirth(LocalDate dateofbirth) {
-		this.dateofbirth = dateofbirth;
-	}
-	public void setSeries(Restaurante restaurante) {
-		this.restaurante = restaurante;
-	}
-	public Restaurante getSeries() {
+
+	public boolean isRestaurante() {
 		return restaurante;
 	}
-    
+
+	public void setRestaurante(boolean restaurante) {
+		this.restaurante = restaurante;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario{" +
+				"id=" + id +
+				", nombre='" + nombre + '\'' +
+				", email='" + email + '\'' +
+				", contrasena='" + contrasena + '\'' +
+				", restaurante=" + restaurante +
+				", imagen='" + imagen + '\'' +
+				", reservas=" + reservas +
+				'}';
+	}
 }

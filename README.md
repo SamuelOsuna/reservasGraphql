@@ -1,2 +1,2 @@
-# graphql-springboot
-Demo project of GraphQL with SpringBoot
+# reservasServidorGraphql
+Servidor de reservas en Graphql con Springboot

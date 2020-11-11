@@ -1,20 +1,32 @@
 // ** Creating Series
  
-mutation {
-  createSeries(name: "Friends", nrOfSeasons: 10) 
-  {
-    id, 
-    name, 
-    nrOfSeasons
+mutation{
+  createUsuario(nombre:"Moises", email:"moises@email.com", contrasena:"moises"){
+    id,
+    nombre,
+    email,
+    contrasena,
+    imagen
   }
 }
 
-mutation {
-  createSeries(name: "The Simpsons", nrOfSeasons: 31) 
-  {
-    id, 
-    name, 
-    nrOfSeasons
+mutation{
+  createUsuario(nombre:"Ismael", email:"ismael@email.com", contrasena:"ismael"){
+    id,
+    nombre,
+    email,
+    contrasena,
+    imagen
+  }
+}
+
+mutation{
+  createUsuario(nombre:"Raquel", email:"raquel@email.com", contrasena:"raquel"){
+    id,
+    nombre,
+    email,
+    contrasena,
+    imagen
   }
 }
 
