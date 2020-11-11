@@ -18,6 +18,8 @@ public class MesaService {
 
     @Autowired
     private MesaDao mesaDao;
+
+    @Autowired
     private RestauranteDao restauranteDao;
 
     @Transactional

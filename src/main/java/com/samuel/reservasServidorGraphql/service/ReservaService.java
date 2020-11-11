@@ -21,8 +21,14 @@ public class ReservaService {
 
     @Autowired
     private ReservaDao reservaDao;
+
+    @Autowired
     private UsuarioDao usuarioDao;
+
+    @Autowired
     private MesaDao mesaDao;
+
+    @Autowired
     private RestauranteDao restauranteDao;
 
     @Transactional
@@ -52,20 +58,17 @@ public class ReservaService {
     @Transactional
     public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo) throws NotFoundException {
         Reserva reserva = new Reserva();
-        Optional<Usuario> optUsuario = usuarioDao.findById(id_usuario);
-        Optional<Mesa> optMesa = mesaDao.findById(id_mesa);
-        Optional<Restaurante> optRestaurante = restauranteDao.findById(id_restaurante);
 
-        if (optUsuario.isPresent()){
-            Usuario usuario = optUsuario.get();
+        if (usuarioDao.findById(id_usuario).isPresent()){
+            Usuario usuario = usuarioDao.findById(id_usuario).get();
             reserva.setUsuario(usuario);
 
-            if (optMesa.isPresent()){
-                Mesa mesa = optMesa.get();
+            if (mesaDao.findById(id_mesa).isPresent()){
+                Mesa mesa = mesaDao.findById(id_mesa).get();
                 reserva.setMesa(mesa);
 
-                if(optRestaurante.isPresent()){
-                    Restaurante restaurante = optRestaurante.get();
+                if( restauranteDao.findById(id_restaurante).isPresent()){
+                    Restaurante restaurante =  restauranteDao.findById(id_restaurante).get();
                     reserva.setRestaurante(restaurante);
                     reserva.setFecha(fecha);
                     reserva.setTipo(tipo);

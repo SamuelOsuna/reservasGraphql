@@ -10,11 +10,13 @@ import com.samuel.reservasServidorGraphql.service.ReservaService;
 import com.samuel.reservasServidorGraphql.service.RestauranteService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.samuel.reservasServidorGraphql.model.Usuario;
 import com.samuel.reservasServidorGraphql.service.UsuarioService;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @Component
 public class Query implements GraphQLQueryResolver {
