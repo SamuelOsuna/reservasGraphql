@@ -10,11 +10,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.tiagoamp</groupId>
-	<artifactId>demo-graphql-spring-boot</artifactId>
+	<groupId>com.samuel</groupId>
+	<artifactId>reservasServidorGraphql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demographql</name>
-	<description>Demo project of GraphQL for Spring Boot</description>
+	<name>reservasServidorGraphql</name>
+	<description>Servidor de reservas en Graphql con Springboot</description>
 
 	<properties>
 		<java.version>1.8</java.version>

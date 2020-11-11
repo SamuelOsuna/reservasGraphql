@@ -28,7 +28,11 @@ public class Mutation implements GraphQLMutationResolver {
     
 	@Autowired
 	private UsuarioService usuarioService;
+
+	@Autowired
 	private ReservaService reservaService;
+
+	@Autowired
 	private MesaService mesaService;
 
 	//Métodos de Usuario

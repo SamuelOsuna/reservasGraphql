@@ -22,15 +22,19 @@ public class UsuarioService {
 	private UsuarioDao usuarioDao;
 
 	@Transactional
-	public List<Usuario> usuariosPorNombre(String nombre){
+	public List<Usuario> usuariosPorNombre(String nombre) throws NotFoundException{
 		List<Usuario> finalUsuarios = new ArrayList<>();
-		List<Usuario> usuarios = usuarioDao.findAll();
-		for (Usuario usuario:usuarios){
-			if(usuario.getNombre().equalsIgnoreCase(nombre)){
+		usuarioDao.findAll().forEach(usuario -> {
+			if (usuario.getNombre().equalsIgnoreCase(nombre)){
 				finalUsuarios.add(usuario);
 			}
+		});
+		if (finalUsuarios != null && !finalUsuarios.isEmpty()){
+			return finalUsuarios;
+		} else {
+			throw new NotFoundException("No se ha encontrado ningún usuario con el nombre: " + nombre);
 		}
-		return finalUsuarios;
+
 	}
 
 	@Transactional

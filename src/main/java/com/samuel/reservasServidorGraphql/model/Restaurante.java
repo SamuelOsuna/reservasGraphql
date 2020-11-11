@@ -27,7 +27,7 @@ public class Restaurante implements Serializable {
 	@Column(name = "imagen")
 	private String imagen;
 
-	@OneToMany(mappedBy = "restaurante")
+	@OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Mesa> mesas;
 
 	@OneToMany(mappedBy = "restaurante")

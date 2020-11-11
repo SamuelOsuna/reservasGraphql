@@ -43,7 +43,7 @@ type Query {
 	restaurantes:[Restaurante]
 	restaurante(id: ID!):Restaurante
 
-	usuariosPorNombre(nombre:String!):[Usuario]
+	usuariosPorNombre(nombre:String!):[Usuario]!
 	usuario(id: ID!):Usuario
 
 	reservasPorUsuario(id_usuario: ID!): [Reserva]

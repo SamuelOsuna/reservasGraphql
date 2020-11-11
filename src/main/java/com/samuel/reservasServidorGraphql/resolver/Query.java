@@ -21,8 +21,14 @@ public class Query implements GraphQLQueryResolver {
 	
 	@Autowired
     private RestauranteService restauranteService;
+
+	@Autowired
 	private UsuarioService usuarioService;
+
+	@Autowired
 	private ReservaService reservaService;
+
+	@Autowired
 	private MesaService mesaService;
 
 	//Métodos de Restaurante
@@ -35,7 +41,7 @@ public class Query implements GraphQLQueryResolver {
 	}
 
 	//Métodos de Usuario
-	public List<Usuario> usuariosPorNombre(String nombre){
+	public List<Usuario> usuariosPorNombre(String nombre) throws NotFoundException{
 		return usuarioService.usuariosPorNombre(nombre);
 	}
 

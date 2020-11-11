@@ -91,9 +91,10 @@ public class ReservaService {
         try {
             reservaDao.deleteById(id);
             return true;
-        } catch (Exception e) {
+        }catch (Exception e){
             return false;
         }
+
     }
 
     @Transactional

@@ -1,7 +1,8 @@
 // ** Creating Series
  
 mutation{
-  createUsuario(nombre:"Moises", email:"moises@email.com", contrasena:"moises"){
+  createUsuario(nombre:"Moises", email:"moises@email.com", contrasena:"moises",
+  imagen:"https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Moises.png"){
     id,
     nombre,
     email,
@@ -11,7 +12,8 @@ mutation{
 }
 
 mutation{
-  createUsuario(nombre:"Ismael", email:"ismael@email.com", contrasena:"ismael"){
+  createUsuario(nombre:"Ismael", email:"ismael@email.com", contrasena:"ismael",
+  imagen:"https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ismael.png"){
     id,
     nombre,
     email,
@@ -21,7 +23,8 @@ mutation{
 }
 
 mutation{
-  createUsuario(nombre:"Raquel", email:"raquel@email.com", contrasena:"raquel"){
+  createUsuario(nombre:"Raquel", email:"raquel@email.com", contrasena:"raquel",
+  imagen:"https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Rebeca.png"){
     id,
     nombre,
     email,

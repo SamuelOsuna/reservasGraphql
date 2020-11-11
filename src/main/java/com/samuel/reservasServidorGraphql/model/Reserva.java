@@ -6,6 +6,8 @@ import java.util.Date;
 @Entity
 public class Reserva {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,11 +47,15 @@ public class Reserva {
         this.usuario = usuario;
         this.mesa = mesa;
         this.restaurante = restaurante;
-        this.nombre = nombre;
+        this.nombre = restaurante.getNombre();
         this.fecha = fecha;
         this.fechacreacion = fechacreacion;
         this.tipo = tipo;
         this.aceptada = null;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public int getId() {
