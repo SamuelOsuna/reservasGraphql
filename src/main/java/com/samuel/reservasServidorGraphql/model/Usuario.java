@@ -31,7 +31,7 @@ public class Usuario implements Serializable {
 	@Column(name = "imagen")
 	private String imagen;
 
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
 	private List<Reserva> reservas;
 
 	public Usuario() {

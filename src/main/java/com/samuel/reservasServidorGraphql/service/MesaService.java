@@ -22,7 +22,7 @@ public class MesaService {
     @Autowired
     private RestauranteDao restauranteDao;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Mesa> mesasPorRestaurante(int id_restaurante) throws NotFoundException {
         Optional<Restaurante> optionalRestaurante = restauranteDao.findById(id_restaurante);
         if (optionalRestaurante.isPresent()){

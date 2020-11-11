@@ -1,6 +1,7 @@
 package com.samuel.reservasServidorGraphql.resolver;
 
 import java.util.List;
+import java.util.Set;
 
 import com.samuel.reservasServidorGraphql.model.Mesa;
 import com.samuel.reservasServidorGraphql.model.Reserva;
@@ -38,7 +39,7 @@ public class Query implements GraphQLQueryResolver {
 		return restauranteService.getRestaurantes();
 	}
 
-	public Restaurante restaurante(int id){
+	public Restaurante restaurante(int id) throws NotFoundException {
 		return restauranteService.restaurantePorId(id);
 	}
 
@@ -56,7 +57,7 @@ public class Query implements GraphQLQueryResolver {
 		return reservaService.reservasPorUsuario(id_usuario);
 	}
 
-	public List<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException {
+	public Set<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException {
 		return reservaService.reservasPorRestaurante(id_restaurante);
 	}
 

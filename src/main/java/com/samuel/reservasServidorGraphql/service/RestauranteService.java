@@ -18,7 +18,7 @@ public class RestauranteService {
         return restauranteDao.findAll();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Restaurante restaurantePorId(int id){
         return restauranteDao.findById(id).orElseThrow(null);
     }

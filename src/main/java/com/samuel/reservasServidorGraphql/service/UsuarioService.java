@@ -21,7 +21,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioDao usuarioDao;
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Usuario> usuariosPorNombre(String nombre) throws NotFoundException{
 		List<Usuario> finalUsuarios = new ArrayList<>();
 		usuarioDao.findAll().forEach(usuario -> {
@@ -37,7 +37,7 @@ public class UsuarioService {
 
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Usuario usuarioPorId(int id){
 		return usuarioDao.findById(id).orElseThrow(null);
 	}

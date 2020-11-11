@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ReservaService {
@@ -31,7 +32,7 @@ public class ReservaService {
     @Autowired
     private RestauranteDao restauranteDao;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Reserva> reservasPorUsuario(int id_usuario) throws NotFoundException{
         Optional<Usuario> optionalUsuario = usuarioDao.findById(id_usuario);
         if(optionalUsuario.isPresent()){
@@ -43,12 +44,12 @@ public class ReservaService {
         }
     }
 
-    @Transactional
-    public List<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException{
+    @Transactional(readOnly = true)
+    public Set<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException{
         Optional<Restaurante> optionalRestaurante = restauranteDao.findById(id_restaurante);
         if (optionalRestaurante.isPresent()){
             Restaurante restaurante = optionalRestaurante.get();
-            List<Reserva> reservas = restaurante.getReservas();
+            Set<Reserva> reservas = restaurante.getReservas();
             return reservas;
         } else {
             throw new NotFoundException("No se ha encontrado ningún restaurante con ese id");
@@ -72,6 +73,7 @@ public class ReservaService {
                     reserva.setRestaurante(restaurante);
                     reserva.setFecha(fecha);
                     reserva.setTipo(tipo);
+                    reserva.setNombre(restaurante.getNombre());
 
                     reservaDao.save(reserva);
                     return reserva;
