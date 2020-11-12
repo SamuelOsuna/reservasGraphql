@@ -65,3 +65,8 @@ type Mutation {
 	deleteMesa(id: ID!): Boolean
 	updateMesa(id: ID!, nmesa: Int, comensales: Int, imagen: String): Mesa
 }
+
+type Subscription {
+	onReservaAdd(id_restaurante: ID!):Reserva
+	onReservaUpdate(id_usuario: ID!):Reserva
+}

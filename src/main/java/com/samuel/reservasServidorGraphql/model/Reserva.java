@@ -1,6 +1,7 @@
 package com.samuel.reservasServidorGraphql.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -31,8 +32,8 @@ public class Reserva {
     @Column(name = "fecha")
     private String fecha;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechacreacion;
+    @Column(name = "fechacreacion")
+    private LocalDateTime fechacreacion;
 
     @Column(name = "tipo")
     private String tipo;
@@ -43,13 +44,13 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Usuario usuario, Mesa mesa, Restaurante restaurante, String nombre, String fecha, Date fechacreacion, String tipo) {
+    public Reserva(Usuario usuario, Mesa mesa, Restaurante restaurante, String nombre, String fecha, String tipo) {
         this.usuario = usuario;
         this.mesa = mesa;
         this.restaurante = restaurante;
         this.nombre = restaurante.getNombre();
         this.fecha = fecha;
-        this.fechacreacion = fechacreacion;
+        this.fechacreacion = LocalDateTime.now();
         this.tipo = tipo;
         this.aceptada = null;
     }
@@ -106,11 +107,11 @@ public class Reserva {
         this.fecha = fecha;
     }
 
-    public Date getFechacreacion() {
+    public LocalDateTime getFechacreacion() {
         return fechacreacion;
     }
 
-    public void setFechacreacion(Date fechacreacion) {
+    public void setFechacreacion(LocalDateTime fechacreacion) {
         this.fechacreacion = fechacreacion;
     }
 
