@@ -1,0 +1,4 @@
+2020-11-12 09:59:41 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO KEY (NOMBRE , CODIGO , ACTIVO ) VALUES ('General'.[*] '7a79d67a06d9df519592977d2f0ce1da',TRUE)"; se esperaba "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO KEY (NOMBRE , CODIGO , ACTIVO ) VALUES ('General'.[*] '7a79d67a06d9df519592977d2f0ce1da',TRUE)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO KEY (NOMBRE , CODIGO , ACTIVO ) VALUES ('General'. '7a79d67a06d9df519592977d2f0ce1da',true) [42001-200]

@@ -37,7 +37,7 @@ public class Reserva {
     @Column(name = "tipo")
     private String tipo;
 
-    @Column(name = "aceptada", nullable = true)
+    @Column(name = "aceptada")
     private Boolean aceptada;
 
     public Reserva() {

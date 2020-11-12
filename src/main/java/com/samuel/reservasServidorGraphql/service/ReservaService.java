@@ -103,12 +103,17 @@ public class ReservaService {
     }
 
     @Transactional
-    public Reserva updateReserva(int id, String tipo) throws NotFoundException {
+    public Reserva updateReserva(int id, String tipo, Boolean aceptada) throws NotFoundException {
         Optional<Reserva> optReserva = reservaDao.findById(id);
 
         if (optReserva.isPresent()){
             Reserva reserva = optReserva.get();
-            reserva.setTipo(tipo);
+            if(tipo != null){
+                reserva.setTipo(tipo);
+            }
+            if(aceptada != null){
+                reserva.setAceptada(aceptada);
+            }
             reservaDao.save(reserva);
             return  reserva;
         } else {

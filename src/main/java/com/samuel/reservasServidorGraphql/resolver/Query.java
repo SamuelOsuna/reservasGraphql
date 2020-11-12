@@ -6,9 +6,7 @@ import java.util.Set;
 import com.samuel.reservasServidorGraphql.model.Mesa;
 import com.samuel.reservasServidorGraphql.model.Reserva;
 import com.samuel.reservasServidorGraphql.model.Restaurante;
-import com.samuel.reservasServidorGraphql.service.MesaService;
-import com.samuel.reservasServidorGraphql.service.ReservaService;
-import com.samuel.reservasServidorGraphql.service.RestauranteService;
+import com.samuel.reservasServidorGraphql.service.*;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Header;
@@ -16,8 +14,9 @@ import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.samuel.reservasServidorGraphql.model.Usuario;
-import com.samuel.reservasServidorGraphql.service.UsuarioService;
 import org.springframework.web.bind.annotation.RequestHeader;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class Query implements GraphQLQueryResolver {
@@ -34,35 +33,74 @@ public class Query implements GraphQLQueryResolver {
 	@Autowired
 	private MesaService mesaService;
 
-	//Métodos de Restaurante
-	public List<Restaurante> restaurantes(){
-		return restauranteService.getRestaurantes();
+	@Autowired
+	private KeyService keyService;
+
+	@Autowired
+	private HttpServletRequest request;
+
+	//Método para obtener el Header que contiene el apikey
+	private String getApiKey() {
+		return request.getHeader("apikey");
 	}
 
-	public Restaurante restaurante(int id) throws NotFoundException {
-		return restauranteService.restaurantePorId(id);
+	//Métodos de Restaurante
+	public List<Restaurante> restaurantes() throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return restauranteService.getRestaurantes();
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
+	}
+
+	public Restaurante restaurante(int id) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return restauranteService.restaurantePorId(id);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
 	}
 
 	//Métodos de Usuario
-	public List<Usuario> usuariosPorNombre(String nombre) throws NotFoundException{
-		return usuarioService.usuariosPorNombre(nombre);
+	public List<Usuario> usuariosPorNombre(String nombre) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return usuarioService.usuariosPorNombre(nombre);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
 	}
 
-	public Usuario usuario(int id){
-		return usuarioService.usuarioPorId(id);
+	public Usuario usuario(int id) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return usuarioService.usuarioPorId(id);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
 	}
 
 	//Métodos de Reserva
-	public List<Reserva> reservasPorUsuario(int id_usuario) throws NotFoundException {
-		return reservaService.reservasPorUsuario(id_usuario);
+	public List<Reserva> reservasPorUsuario(int id_usuario) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return reservaService.reservasPorUsuario(id_usuario);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
 	}
 
-	public Set<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException {
-		return reservaService.reservasPorRestaurante(id_restaurante);
+	public Set<Reserva> reservasPorRestaurante(int id_restaurante) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return reservaService.reservasPorRestaurante(id_restaurante);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
 	}
 
 	//Métodos de Mesa
-	public List<Mesa> mesasPorRestaurante(int id_restaurante) throws NotFoundException {
-		return mesaService.mesasPorRestaurante(id_restaurante);
+	public List<Mesa> mesasPorRestaurante(int id_restaurante) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return mesaService.mesasPorRestaurante(id_restaurante);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
 	}
 }

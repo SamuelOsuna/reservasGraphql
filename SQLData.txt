@@ -1,0 +1,188 @@
+/*
+* TABLA KEY
+*/
+INSERT INTO KEY (NOMBRE , CODIGO , ACTIVO ) VALUES ('General', '7a79d67a06d9df519592977d2f0ce1da',true);
+
+/*
+* TABLA USUARIO
+*/
+
+INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('moises', 'moises@email.com', 
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Moises.png', 'Moises', true);
+
+INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('ismael', 'ismael@email.com', 
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ismael.png', 'Ismael', false);
+
+INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('isaac', 'isaac@email.com', 
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Isaac.png', 'Isaac', false);
+
+INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('ezequiel', 'ezequiel@email.com', 
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ezequiel.png', 'Ezequiel', false);
+
+INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('rebeca', 'rebeca@email.com', 
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Rebeca.png', 'Rebeca', false);
+
+/*
+* TABLA RESTAURANTE
+*/
+
+INSERT INTO RESTAURANTE (NOMBRE , DIRECCION , TELEFONO , IMAGEN ) VALUES ('La Ratatouille', 'Calle Lavapiés, 7','666777888',
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Restaurantes/Rest_Rata.png');
+
+INSERT INTO RESTAURANTE (NOMBRE , DIRECCION , TELEFONO , IMAGEN ) VALUES ('The Frosty Palace', 'Calle Lavapiés, 8','777888999',
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Restaurantes/Rest_Frosty.jpg');
+
+INSERT INTO RESTAURANTE (NOMBRE , DIRECCION , TELEFONO , IMAGEN ) VALUES ('La Cantina', 'Mos Eisley, Tatooine','666777888',
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Restaurantes/Rest_Cantina.png');
+
+INSERT INTO RESTAURANTE (NOMBRE , DIRECCION , TELEFONO , IMAGEN ) VALUES ('Central Perk', 'Central Park, 43','666777888',
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Restaurantes/Rest_Central.jpg');
+
+INSERT INTO RESTAURANTE (NOMBRE , DIRECCION , TELEFONO , IMAGEN ) VALUES ('The Leaky Cauldron', 'Diagon Alley, 20','666777888',
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Restaurantes/Rest_Cauldron.jpg');
+
+/*
+* TABLA MESA
+*/
+
+--Restaurante 1
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (1, 1, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (2, 1, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (3, 1, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (4, 1, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (5, 1, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (6, 1, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+--Restaurante 2
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (1, 2, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (2, 2, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (3, 2, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (4, 2, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+--Restaurante 3
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (1, 3, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (2, 3, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (3, 3, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (4, 3, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (5, 3, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (6, 3, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (7, 3, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (8, 3, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+--Restaurante 4
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (1, 4, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (2, 4, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (3, 4, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (4, 4, 6,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa6.png');
+
+--Restaurante 5
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (1, 5, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (2, 5, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (3, 5, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (4, 5, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (5, 5, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+INSERT INTO MESA (NMESA, ID_RESTAURANTE, COMENSALES, IMAGEN ) VALUES (6, 5, 4,
+'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Mesas/Mesa4.png');
+
+/*
+* TABLA RESERVA
+*/
+
+--Usuario 2
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (2, 1, 3, 'La Ratatouille', '22/04/2021', 'Cena', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (2, 2, 1, 'The Frosty Palace', '22/04/2021', 'Almuerzo', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (2, 3, 1, 'La Cantina', '22/05/2021', 'Cena', null);
+
+--Usuario 3
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (3, 1, 3, 'La Ratatouille', '14/02/2021', 'Cena', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (3, 3, 1, 'La Cantina', '27/08/2021', 'Almuerzo', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (3, 5, 1, 'The Leaky Cauldron', '08/04/2021', 'Cena', null);
+
+--Usuario 4
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (4, 4, 3, 'Central Perk', '07/08/2021', 'Almuerzo', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (4, 3, 3, 'La Cantina', '17/12/2021', 'Almuerzo', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (4, 5, 3, 'The Leaky Cauldron', '20/02/2021', 'Almuerzo', null);
+
+--Usuario 5
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (5, 5, 3, 'The Leaky Cauldron', '12/10/2021', 'Cena', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (5, 2, 3, 'The Frosty Palace', '22/12/2020', 'Almuerzo', null);
+
+INSERT INTO RESERVA (ID_USUARIO, ID_RESTAURANTE, ID_MESA, NOMBRE, FECHA, TIPO, ACEPTADA)
+VALUES (5, 1, 3, 'La Ratatouille', '16/03/2021', 'Almuerzo', null);

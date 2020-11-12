@@ -59,7 +59,7 @@ type Mutation {
 
 	createReserva(id_usuario: ID!,id_mesa: ID!,id_restaurante: ID!,fecha: String!,tipo: String!): Reserva
 	deleteReserva(id: ID!): Boolean
-	updateReserva(id: ID!, tipo: String!): Reserva
+	updateReserva(id: ID!, tipo: String, aceptada: Boolean): Reserva
 
 	createMesa(id_restaurante: ID!, nmesa: Int!, comensales: Int, imagen: String): Mesa
 	deleteMesa(id: ID!): Boolean
