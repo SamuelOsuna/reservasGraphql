@@ -86,7 +86,7 @@ public class Query implements GraphQLQueryResolver {
 		}
 	}
 
-	public Set<Reserva> reservasPorRestaurante(int id_restaurante) throws Exception {
+	public List<Reserva> reservasPorRestaurante(int id_restaurante) throws Exception {
 		if(keyService.compruebaKey(getApiKey())){
 			return reservaService.reservasPorRestaurante(id_restaurante);
 		} else {

@@ -17,6 +17,9 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,20 +48,18 @@ public class ReservaService {
         Optional<Usuario> optionalUsuario = usuarioDao.findById(id_usuario);
         if (optionalUsuario.isPresent()) {
             Usuario usuario = optionalUsuario.get();
-            List<Reserva> reservas = usuario.getReservas();
-            return reservas;
+            return usuario.getReservas();
         } else {
             throw new NotFoundException("No se ha encontrado ningún usuario con ese id");
         }
     }
 
     @Transactional(readOnly = true)
-    public Set<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException {
+    public List<Reserva> reservasPorRestaurante(int id_restaurante) throws NotFoundException {
         Optional<Restaurante> optionalRestaurante = restauranteDao.findById(id_restaurante);
         if (optionalRestaurante.isPresent()) {
             Restaurante restaurante = optionalRestaurante.get();
-            Set<Reserva> reservas = restaurante.getReservas();
-            return reservas;
+            return restaurante.getReservas();
         } else {
             throw new NotFoundException("No se ha encontrado ningún restaurante con ese id");
         }
@@ -82,6 +83,9 @@ public class ReservaService {
                     reserva.setFecha(fecha);
                     reserva.setTipo(tipo);
                     reserva.setNombre(restaurante.getNombre());
+
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                    reserva.setFechacreacion(LocalDateTime.now(ZoneId.of("GMT+1")).format(formatter));
 
                     reservaDao.save(reserva);
                     if(subscribers.get(restaurante.getId())!=null){

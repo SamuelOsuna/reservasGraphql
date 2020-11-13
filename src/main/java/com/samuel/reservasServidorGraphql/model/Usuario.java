@@ -1,8 +1,9 @@
 package com.samuel.reservasServidorGraphql.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -32,7 +33,7 @@ public class Usuario implements Serializable {
 	private String imagen;
 
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-	private List<Reserva> reservas;
+	private Set<Reserva> reservas;
 
 	public Usuario() {
 	}
@@ -98,10 +99,11 @@ public class Usuario implements Serializable {
 	}
 
 	public List<Reserva> getReservas() {
-		return reservas;
+		List<Reserva> devuelve = new ArrayList<>(this.reservas);
+		return devuelve;
 	}
 
-	public void setReservas(List<Reserva> reservas) {
+	public void setReservas(Set<Reserva> reservas) {
 		this.reservas = reservas;
 	}
 

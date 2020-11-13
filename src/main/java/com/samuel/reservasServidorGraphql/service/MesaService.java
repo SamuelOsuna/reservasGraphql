@@ -27,8 +27,7 @@ public class MesaService {
         Optional<Restaurante> optionalRestaurante = restauranteDao.findById(id_restaurante);
         if (optionalRestaurante.isPresent()){
             Restaurante restaurante = optionalRestaurante.get();
-            List<Mesa> mesas = restaurante.getMesas();
-            return mesas;
+            return restaurante.getMesas();
         } else {
             throw new NotFoundException("No se ha encontrado ningun restaurante con ese id");
         }

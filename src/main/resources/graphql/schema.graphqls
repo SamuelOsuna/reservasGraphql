@@ -5,7 +5,7 @@ type Usuario {
 	contrasena: String,
 	restaurante: Boolean,
 	imagen: String,
-	reservas: [Reserva]
+	#reservas: [Reserva]
 }
 
 type Restaurante {
@@ -22,7 +22,7 @@ type Reserva {
 	id: ID!,
 	usuario: Usuario,
 	mesa: Mesa,
-	restaurante: Restaurante,
+	#restaurante: Restaurante,
 	nombre: String,
 	fecha: String,
 	fechacreacion: String,
@@ -36,7 +36,7 @@ type Mesa {
 	nmesa: Int,
 	comensales: Int,
 	imagen: String,
-	restaurante: Restaurante,
+	#restaurante: Restaurante,
 }
 
 type Query {
@@ -46,7 +46,7 @@ type Query {
 	usuariosPorNombre(nombre:String!):[Usuario]!
 	usuario(id: ID!):Usuario
 
-	reservasPorUsuario(id_usuario: ID!): [Reserva]
+	reservasPorUsuario(id_usuario: ID!): [Reserva]!
 	reservasPorRestaurante(id_restaurante: ID!): [Reserva]
 
 	mesasPorRestaurante(id_restaurante: ID!): [Mesa]
