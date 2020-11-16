@@ -22,7 +22,7 @@ type Reserva {
 	id: ID!,
 	usuario: Usuario,
 	mesa: Mesa,
-	#restaurante: Restaurante,
+	restaurante: Restaurante,
 	nombre: String,
 	fecha: String,
 	fechacreacion: String,

@@ -29,12 +29,20 @@ public class Subscription implements GraphQLSubscriptionResolver {
         return request.getHeader("apikey");
     }
 
-    public Publisher<Reserva> onReservaAdd(int id_restaurante){
-        return reservaService.onReservaAdd(id_restaurante);
+    public Publisher<Reserva> onReservaAdd(int id_restaurante) throws Exception {
+        //if(keyService.compruebaKey(getApiKey())){
+            return reservaService.onReservaAdd(id_restaurante);
+       // } else {
+        //    throw new Exception("No tiene permisos para acceder a este método");
+       // }
     }
 
-    public Publisher<Reserva> onReservaUpdate(int id_usuario){
+    public Publisher<Reserva> onReservaUpdate(int id_usuario) throws Exception {
+        //if(keyService.compruebaKey(getApiKey())){
         return reservaService.onReservaUpdate(id_usuario);
+        //} else {
+        //    throw new Exception("No tiene permisos para acceder a este método");
+        //}
     }
 
 }
