@@ -27,7 +27,10 @@ public class Usuario implements Serializable {
     private String contrasena;
     
     @Column(name = "restaurante")
-    private boolean restaurante;
+    private Integer restaurante;
+
+    @Column(name = "telefono")
+	private String telefono;
 
 	@Column(name = "imagen")
 	private String imagen;
@@ -38,7 +41,7 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String nombre, String email, String contrasena, boolean restaurante, String imagen) {
+	public Usuario(String nombre, String email, String contrasena, int restaurante, String imagen) {
 		this.nombre = nombre;
 		this.email = email;
 		this.contrasena = contrasena;
@@ -48,6 +51,18 @@ public class Usuario implements Serializable {
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
+	}
+
+	public void setRestaurante(Integer restaurante) {
+		this.restaurante = restaurante;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public int getId() {
@@ -82,11 +97,11 @@ public class Usuario implements Serializable {
 		this.contrasena = contrasena;
 	}
 
-	public boolean isRestaurante() {
+	public Integer getRestaurante() {
 		return restaurante;
 	}
 
-	public void setRestaurante(boolean restaurante) {
+	public void setRestaurante(int restaurante) {
 		this.restaurante = restaurante;
 	}
 
@@ -115,6 +130,7 @@ public class Usuario implements Serializable {
 				", email='" + email + '\'' +
 				", contrasena='" + contrasena + '\'' +
 				", restaurante=" + restaurante +
+				", telefono='" + telefono + '\'' +
 				", imagen='" + imagen + '\'' +
 				", reservas=" + reservas +
 				'}';

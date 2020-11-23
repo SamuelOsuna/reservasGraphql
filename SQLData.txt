@@ -7,20 +7,20 @@ INSERT INTO KEY (NOMBRE , CODIGO , ACTIVO ) VALUES ('General', '7a79d67a06d9df51
 * TABLA USUARIO
 */
 
-INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('moises', 'moises@email.com', 
-'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Moises.png', 'Moises', true);
+INSERT INTO USUARIO (CONTRASENA , EMAIL , TELEFONO, IMAGEN , NOMBRE , RESTAURANTE ) VALUES('moises', 'moises@email.com',
+'666777888','https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Moises.png', 'Moises', 1);
 
-INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('ismael', 'ismael@email.com', 
-'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ismael.png', 'Ismael', false);
+INSERT INTO USUARIO (CONTRASENA , EMAIL , TELEFONO, IMAGEN , NOMBRE) VALUES('ismael', 'ismael@email.com',
+'654987321','https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ismael.png', 'Ismael');
 
-INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('isaac', 'isaac@email.com', 
-'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Isaac.png', 'Isaac', false);
+INSERT INTO USUARIO (CONTRASENA , EMAIL , TELEFONO, IMAGEN , NOMBRE) VALUES('isaac', 'isaac@email.com',
+'623548975','https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Isaac.png', 'Isaac');
 
-INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('ezequiel', 'ezequiel@email.com', 
-'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ezequiel.png', 'Ezequiel', false);
+INSERT INTO USUARIO (CONTRASENA , EMAIL , TELEFONO, IMAGEN , NOMBRE) VALUES('ezequiel', 'ezequiel@email.com',
+'678587625','https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Ezequiel.png', 'Ezequiel');
 
-INSERT INTO USUARIO (CONTRASENA , EMAIL , IMAGEN , NOMBRE , RESTAURANTE ) VALUES('rebeca', 'rebeca@email.com', 
-'https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Rebeca.png', 'Rebeca', false);
+INSERT INTO USUARIO (CONTRASENA , EMAIL , TELEFONO, IMAGEN , NOMBRE) VALUES('rebeca', 'rebeca@email.com',
+'696784521','https://raw.githubusercontent.com/SamuelOsuna/appResources/main/Usuarios/User_Rebeca.png', 'Rebeca');
 
 /*
 * TABLA RESTAURANTE

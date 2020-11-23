@@ -45,9 +45,9 @@ public class Mutation implements GraphQLMutationResolver {
 	}
 
 	//Métodos de Usuario
-	public Usuario createUsuario(String nombre, String email, String contrasena, String imagen) throws Exception {
+	public Usuario createUsuario(String nombre, String email, String contrasena, String imagen, String telefono) throws Exception {
 		if(keyService.compruebaKey(getApiKey())){
-			return usuarioService.createUsuario(nombre, email, contrasena, imagen);
+			return usuarioService.createUsuario(nombre, email, contrasena, imagen, telefono);
 		} else {
 			throw new Exception("No tiene permisos para acceder a este método");
 		}
@@ -61,9 +61,9 @@ public class Mutation implements GraphQLMutationResolver {
 		}
 	}
 
-	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen) throws Exception {
+	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen, String telefono) throws Exception {
 		if(keyService.compruebaKey(getApiKey())){
-			return usuarioService.updateUsuario(id, nombre, email, contrasena, imagen);
+			return usuarioService.updateUsuario(id, nombre, email, contrasena, imagen, telefono);
 		} else {
 			throw new Exception("No tiene permisos para acceder a este método");
 		}

@@ -43,7 +43,7 @@ public class UsuarioService {
 	}
 	
 	@Transactional
-	public Usuario createUsuario(String nombre, String email, String contrasena, String imagen){
+	public Usuario createUsuario(String nombre, String email, String contrasena, String imagen, String telefono){
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);
 		usuario.setEmail(email);
@@ -51,6 +51,9 @@ public class UsuarioService {
 
 		if (imagen != null){
 			usuario.setImagen(imagen);
+		}
+		if (telefono != null){
+			usuario.setTelefono(telefono);
 		}
 
 		usuarioDao.save(usuario);
@@ -69,7 +72,7 @@ public class UsuarioService {
 	}
 
 	@Transactional
-	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen) throws NotFoundException {
+	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen, String telefono) throws NotFoundException {
 		Usuario usuario = new Usuario();
 		Optional<Usuario> optUsuario = usuarioDao.findById(id);
 
@@ -86,6 +89,9 @@ public class UsuarioService {
 			}
 			if (imagen != null){
 				usuario.setImagen(imagen);
+			}
+			if (telefono != null){
+				usuario.setTelefono(telefono);
 			}
 			usuarioDao.save(usuario);
 			return usuario;

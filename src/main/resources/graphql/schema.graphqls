@@ -3,8 +3,9 @@ type Usuario {
 	nombre: String,
 	email: String,
 	contrasena: String,
-	restaurante: Boolean,
+	restaurante: Int,
 	imagen: String,
+	telefono: String,
 	#reservas: [Reserva]
 }
 
@@ -53,9 +54,9 @@ type Query {
 }
 
 type Mutation {
-	createUsuario(nombre: String!,email: String!,contrasena: String!,imagen: String):Usuario
+	createUsuario(nombre: String!,email: String!,contrasena: String!,imagen: String, telefono: String):Usuario
 	deleteUsuario(id: ID!):Boolean
-	updateUsuario(id:ID!, nombre: String, email: String, contrasena: String, imagen: String):Usuario
+	updateUsuario(id:ID!, nombre: String, email: String, contrasena: String, imagen: String, telefono: String):Usuario
 
 	createReserva(id_usuario: ID!,id_mesa: ID!,id_restaurante: ID!,fecha: String!,tipo: String!): Reserva
 	deleteReserva(id: ID!): Boolean
