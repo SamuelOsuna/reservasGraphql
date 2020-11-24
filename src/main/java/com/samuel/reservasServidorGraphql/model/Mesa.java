@@ -14,15 +14,12 @@ public class Mesa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank
     @Column(name = "nmesa")
     private int nmesa;
 
-    @NotBlank
     @Column(name = "comensales")
     private int comensales;
 
-    @NotBlank
     @Column(name = "imagen")
     private String imagen;
 
@@ -33,7 +30,7 @@ public class Mesa {
     public Mesa() {
     }
 
-    public Mesa(@NotBlank int nmesa, @NotBlank int comensales, @NotBlank String imagen, Restaurante restaurante) {
+    public Mesa(int nmesa, int comensales, String imagen, Restaurante restaurante) {
         this.nmesa = nmesa;
         this.comensales = comensales;
         this.imagen = imagen;

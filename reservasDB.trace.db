@@ -1,0 +1,4 @@
+2020-11-24 12:57:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "DELETE *[*] FROM MESA WHERE ID_RESTAURANTE = 1"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE *[*] FROM MESA WHERE ID_RESTAURANTE = 1"; expected "identifier"; SQL statement:
+DELETE * FROM MESA WHERE ID_RESTAURANTE = 1 [42001-200]
