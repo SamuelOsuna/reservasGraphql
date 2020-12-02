@@ -7,8 +7,6 @@ import java.util.List;
 @Entity
 public class Mesa {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +33,6 @@ public class Mesa {
         this.comensales = comensales;
         this.imagen = imagen;
         this.restaurante = restaurante;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public int getId() {

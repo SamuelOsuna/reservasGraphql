@@ -28,7 +28,8 @@ type Reserva {
 	fecha: String,
 	fechacreacion: String,
 	tipo: String,
-	aceptada: Boolean
+	aceptada: Boolean,
+	notas:String
 
 }
 
@@ -58,9 +59,9 @@ type Mutation {
 	deleteUsuario(id: ID!):Boolean
 	updateUsuario(id:ID!, nombre: String, email: String, contrasena: String, imagen: String, telefono: String):Usuario
 
-	createReserva(id_usuario: ID!,id_mesa: ID!,id_restaurante: ID!,fecha: String!,tipo: String!): Reserva
+	createReserva(id_usuario: ID!,id_mesa: ID!,id_restaurante: ID!,fecha: String!,tipo: String!, notas: String): Reserva
 	deleteReserva(id: ID!): Boolean
-	updateReserva(id: ID!, tipo: String, aceptada: Boolean): Reserva
+	updateReserva(id: ID!, tipo: String, aceptada: Boolean, notas:String): Reserva
 
 	createMesa(id_restaurante: ID!, nmesa: Int!, comensales: Int!, imagen: String!): Mesa
 	deleteMesa(id: ID!): Boolean

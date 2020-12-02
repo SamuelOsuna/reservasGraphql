@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
     @Column(name = "telefono")
 	private String telefono;
 
-	@Column(name = "imagen")
+	@Column(name = "imagen", length=200000)
 	private String imagen;
 
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)

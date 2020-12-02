@@ -66,7 +66,7 @@ public class ReservaService {
     }
 
     @Transactional
-    public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo) throws NotFoundException {
+    public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo, String notas) throws NotFoundException {
         Reserva reserva = new Reserva();
 
         if (usuarioDao.findById(id_usuario).isPresent()) {
@@ -83,6 +83,10 @@ public class ReservaService {
                     reserva.setFecha(fecha);
                     reserva.setTipo(tipo);
                     reserva.setNombre(restaurante.getNombre());
+
+                    if(notas != null && notas != "undefined"){
+                        reserva.setNotas(notas);
+                    }
 
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                     reserva.setFechacreacion(LocalDateTime.now(ZoneId.of("GMT+1")).format(formatter));
@@ -118,7 +122,7 @@ public class ReservaService {
     }
 
     @Transactional
-    public Reserva updateReserva(int id, String tipo, Boolean aceptada) throws NotFoundException {
+    public Reserva updateReserva(int id, String tipo, Boolean aceptada, String notas) throws NotFoundException {
         Optional<Reserva> optReserva = reservaDao.findById(id);
 
         if (optReserva.isPresent()) {
@@ -128,6 +132,9 @@ public class ReservaService {
             }
             if (aceptada != null) {
                 reserva.setAceptada(aceptada);
+            }
+            if(notas != null && notas != "undefined"){
+                reserva.setNotas(notas);
             }
             reservaDao.save(reserva);
             if(subscribers.get(reserva.getUsuario().getId())!=null){

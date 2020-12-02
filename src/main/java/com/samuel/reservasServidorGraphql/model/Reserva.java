@@ -1,9 +1,6 @@
 package com.samuel.reservasServidorGraphql.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 @Entity
 public class Reserva {
@@ -38,6 +35,9 @@ public class Reserva {
 
     @Column(name = "tipo")
     private String tipo;
+
+    @Column(name = "notas")
+    private String notas;
 
     @Column(name = "aceptada")
     private Boolean aceptada;
@@ -131,6 +131,14 @@ public class Reserva {
         this.aceptada = aceptada;
     }
 
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
+    }
+
     @Override
     public String toString() {
         return "Reserva{" +
@@ -140,8 +148,9 @@ public class Reserva {
                 ", restaurante=" + restaurante +
                 ", nombre='" + nombre + '\'' +
                 ", fecha='" + fecha + '\'' +
-                ", fechacreacion=" + fechacreacion +
+                ", fechacreacion='" + fechacreacion + '\'' +
                 ", tipo='" + tipo + '\'' +
+                ", notas='" + notas + '\'' +
                 ", aceptada=" + aceptada +
                 '}';
     }

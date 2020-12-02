@@ -49,7 +49,7 @@ public class MesaService {
                 mesa.setImagen(imagen);
             }
 
-            mesaDao.save(mesa);
+            this.mesaDao.save(mesa);
             return mesa;
         } else {
             throw new NotFoundException("No existe ningún restaurante con ese id");
@@ -59,7 +59,7 @@ public class MesaService {
     @Transactional
     public boolean deleteMesa(int id){
         try	{
-            mesaDao.deleteById(id);
+            this.mesaDao.deleteById(id);
             return true;
         } catch (Exception e) {
             return false;
@@ -68,7 +68,7 @@ public class MesaService {
 
     @Transactional
     public Mesa updateMesa(int id, int nmesa, int comensales, String imagen) throws NotFoundException {
-        Optional<Mesa> optMesa = mesaDao.findById(id);
+        Optional<Mesa> optMesa = this.mesaDao.findById(id);
         if (optMesa.isPresent()){
             Mesa mesa = optMesa.get();
 
@@ -82,7 +82,7 @@ public class MesaService {
                 mesa.setImagen(imagen);
             }
 
-            mesaDao.save(mesa);
+            this.mesaDao.save(mesa);
             return mesa;
 
         } else {

@@ -70,9 +70,9 @@ public class Mutation implements GraphQLMutationResolver {
 	}
 
 	//Métodos de Reserva
-	public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo) throws Exception {
+	public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo, String notas) throws Exception {
 		if(keyService.compruebaKey(getApiKey())){
-			return reservaService.createReserva(id_usuario, id_mesa, id_restaurante, fecha, tipo);
+			return reservaService.createReserva(id_usuario, id_mesa, id_restaurante, fecha, tipo, notas);
 		} else {
 			throw new Exception("No tiene permisos para acceder a este método");
 		}
@@ -86,9 +86,9 @@ public class Mutation implements GraphQLMutationResolver {
 		}
 	}
 
-	public Reserva updateReserva(int id, String tipo, Boolean aceptada) throws Exception {
+	public Reserva updateReserva(int id, String tipo, Boolean aceptada, String notas) throws Exception {
 		if(keyService.compruebaKey(getApiKey())){
-			return reservaService.updateReserva(id, tipo, aceptada);
+			return reservaService.updateReserva(id, tipo, aceptada, notas);
 		} else {
 			throw new Exception("No tiene permisos para acceder a este método");
 		}
