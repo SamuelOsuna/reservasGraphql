@@ -37,6 +37,9 @@ public class Mutation implements GraphQLMutationResolver {
 	private KeyService keyService;
 
 	@Autowired
+	private RestauranteService restauranteService;
+
+	@Autowired
 	private HttpServletRequest request;
 
 	//Método para obtener el Header que contiene el apikey
@@ -114,6 +117,15 @@ public class Mutation implements GraphQLMutationResolver {
 	public Mesa updateMesa(int id, int nmesa, int comensales, String imagen) throws Exception {
 		if(keyService.compruebaKey(getApiKey())){
 			return mesaService.updateMesa(id, nmesa, comensales, imagen);
+		} else {
+			throw new Exception("No tiene permisos para acceder a este método");
+		}
+	}
+
+	//Métodos de Restaurante
+	public boolean setFechasRestaurante(int id_restaurante, String fechas) throws Exception {
+		if(keyService.compruebaKey(getApiKey())){
+			return restauranteService.setFechasRestaurante(id_restaurante, fechas);
 		} else {
 			throw new Exception("No tiene permisos para acceder a este método");
 		}

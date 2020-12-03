@@ -29,6 +29,9 @@ public class Restaurante implements Serializable {
 	@Column(name = "imagen")
 	private String imagen;
 
+	@Column(name = "diascerrado")
+	private String diascerrado;
+
 	@OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private Set<Mesa> mesas;
 
@@ -109,8 +112,29 @@ public class Restaurante implements Serializable {
 		this.reservas = reservas;
 	}
 
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public String getDiascerrado() {
+		return diascerrado;
+	}
+
+	public void setDiascerrado(String diascerrado) {
+		this.diascerrado = diascerrado;
+	}
+
 	@Override
 	public String toString() {
-		return "Restaurante{" + "id=" + id + ", mesas=" + mesas + ", reservas=" + reservas + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", imagen=" + imagen + '}';
+		return "Restaurante{" +
+				"id=" + id +
+				", nombre='" + nombre + '\'' +
+				", direccion='" + direccion + '\'' +
+				", telefono='" + telefono + '\'' +
+				", imagen='" + imagen + '\'' +
+				", diascerrado='" + diascerrado + '\'' +
+				", mesas=" + mesas +
+				", reservas=" + reservas +
+				'}';
 	}
 }

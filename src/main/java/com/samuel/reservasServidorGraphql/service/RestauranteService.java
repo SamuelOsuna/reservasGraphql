@@ -22,4 +22,22 @@ public class RestauranteService {
     public Restaurante restaurantePorId(int id){
         return restauranteDao.findById(id).orElseThrow(null);
     }
+
+    @Transactional
+    public boolean setFechasRestaurante(int id_restaurante, String fechas) throws Exception {
+        boolean guardado = false;
+
+        Restaurante restaurante = restauranteDao.findById(id_restaurante).orElseThrow(null);
+        if(restaurante != null){
+            try{
+                restaurante.setDiascerrado(fechas);
+                guardado = true;
+            }catch (Exception e){
+                throw new Exception(e);
+            }
+
+        }
+
+        return  guardado;
+    }
 }

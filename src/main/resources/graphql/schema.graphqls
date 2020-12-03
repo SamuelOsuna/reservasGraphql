@@ -16,7 +16,8 @@ type Restaurante {
 	nombre: String,
 	direccion: String,
 	telefono: String,
-	imagen: String
+	imagen: String,
+	diascerrado:String
 }
 
 type Reserva {
@@ -66,6 +67,8 @@ type Mutation {
 	createMesa(id_restaurante: ID!, nmesa: Int!, comensales: Int!, imagen: String!): Mesa
 	deleteMesa(id: ID!): Boolean
 	updateMesa(id: ID!, nmesa: Int, comensales: Int, imagen: String): Mesa
+
+	setFechasRestaurante(id_restaurante: ID!, fechas: String!):Boolean
 }
 
 type Subscription {
