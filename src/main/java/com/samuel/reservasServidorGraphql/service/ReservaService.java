@@ -4,6 +4,7 @@ import com.samuel.reservasServidorGraphql.dao.MesaDao;
 import com.samuel.reservasServidorGraphql.dao.ReservaDao;
 import com.samuel.reservasServidorGraphql.dao.RestauranteDao;
 import com.samuel.reservasServidorGraphql.dao.UsuarioDao;
+import com.samuel.reservasServidorGraphql.errors.CustomError;
 import com.samuel.reservasServidorGraphql.model.Mesa;
 import com.samuel.reservasServidorGraphql.model.Reserva;
 import com.samuel.reservasServidorGraphql.model.Restaurante;
@@ -50,7 +51,7 @@ public class ReservaService {
             Usuario usuario = optionalUsuario.get();
             return usuario.getReservas();
         } else {
-            throw new NotFoundException("No se ha encontrado ningún usuario con ese id");
+            throw new CustomError("No se ha encontrado ningún usuario con ese id");
         }
     }
 
@@ -61,12 +62,12 @@ public class ReservaService {
             Restaurante restaurante = optionalRestaurante.get();
             return restaurante.getReservas();
         } else {
-            throw new NotFoundException("No se ha encontrado ningún restaurante con ese id");
+            throw new CustomError("No se ha encontrado ningún restaurante con ese id");
         }
     }
 
     @Transactional
-    public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo, String notas) throws NotFoundException {
+    public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo, String notas){
         Reserva reserva = new Reserva();
 
         if (usuarioDao.findById(id_usuario).isPresent()) {
@@ -98,15 +99,15 @@ public class ReservaService {
                     return reserva;
 
                 } else {
-                    throw new NotFoundException("No existe nigun restaurante con ese id");
+                    throw new CustomError("No existe nigun restaurante con ese id");
                 }
 
             } else {
-                throw new NotFoundException("No existe niguna mesa con ese id");
+                throw new CustomError("No existe niguna mesa con ese id");
             }
 
         } else {
-            throw new NotFoundException("No existe nigún usuario con ese id");
+            throw new CustomError("No existe nigún usuario con ese id");
         }
     }
 
@@ -122,7 +123,7 @@ public class ReservaService {
     }
 
     @Transactional
-    public Reserva updateReserva(int id, String tipo, Boolean aceptada, String notas) throws NotFoundException {
+    public Reserva updateReserva(int id, String tipo, Boolean aceptada, String notas){
         Optional<Reserva> optReserva = reservaDao.findById(id);
 
         if (optReserva.isPresent()) {
@@ -142,7 +143,7 @@ public class ReservaService {
             }
             return reserva;
         } else {
-            throw new NotFoundException("No hay ninguna reserva con ese id");
+            throw new CustomError("No hay ninguna reserva con ese id");
         }
     }
 

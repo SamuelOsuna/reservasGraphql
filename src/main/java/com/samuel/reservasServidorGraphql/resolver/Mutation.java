@@ -8,6 +8,7 @@ import com.samuel.reservasServidorGraphql.dao.MesaDao;
 import com.samuel.reservasServidorGraphql.dao.ReservaDao;
 import com.samuel.reservasServidorGraphql.dao.RestauranteDao;
 import com.samuel.reservasServidorGraphql.dao.UsuarioDao;
+import com.samuel.reservasServidorGraphql.errors.CustomError;
 import com.samuel.reservasServidorGraphql.model.Mesa;
 import com.samuel.reservasServidorGraphql.model.Reserva;
 import com.samuel.reservasServidorGraphql.service.*;
@@ -48,52 +49,52 @@ public class Mutation implements GraphQLMutationResolver {
 	}
 
 	//Métodos de Usuario
-	public Usuario createUsuario(String nombre, String email, String contrasena, String imagen, String telefono) throws Exception {
+	public Usuario createUsuario(String nombre, String email, String contrasena, String imagen, String telefono) throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return usuarioService.createUsuario(nombre, email, contrasena, imagen, telefono);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public boolean deleteUsuario(int id) throws Exception {
+	public boolean deleteUsuario(int id) throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return usuarioService.deleteUsuario(id);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen, String telefono) throws Exception {
+	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen, String telefono) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return usuarioService.updateUsuario(id, nombre, email, contrasena, imagen, telefono);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
 	//Métodos de Reserva
-	public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo, String notas) throws Exception {
+	public Reserva createReserva(int id_usuario, int id_mesa, int id_restaurante, String fecha, String tipo, String notas) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return reservaService.createReserva(id_usuario, id_mesa, id_restaurante, fecha, tipo, notas);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public boolean deleteReserva(int id) throws Exception {
+	public boolean deleteReserva(int id) throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return reservaService.deleteReserva(id);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public Reserva updateReserva(int id, String tipo, Boolean aceptada, String notas) throws Exception {
+	public Reserva updateReserva(int id, String tipo, Boolean aceptada, String notas) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return reservaService.updateReserva(id, tipo, aceptada, notas);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
@@ -102,15 +103,15 @@ public class Mutation implements GraphQLMutationResolver {
 		if(keyService.compruebaKey(getApiKey())){
 			return mesaService.createMesa(id_restaurante, nmesa, comensales, imagen);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public boolean deleteMesa(int id) throws Exception {
+	public boolean deleteMesa(int id) throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return mesaService.deleteMesa(id);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
@@ -118,7 +119,7 @@ public class Mutation implements GraphQLMutationResolver {
 		if(keyService.compruebaKey(getApiKey())){
 			return mesaService.updateMesa(id, nmesa, comensales, imagen);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
@@ -127,7 +128,7 @@ public class Mutation implements GraphQLMutationResolver {
 		if(keyService.compruebaKey(getApiKey())){
 			return restauranteService.setFechasRestaurante(id_restaurante, fechas);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 }

@@ -42,6 +42,10 @@ type Mesa {
 	#restaurante: Restaurante,
 }
 
+type Error{
+	mensaje:String
+}
+
 type Query {
 	restaurantes:[Restaurante]
 	restaurante(id: ID!):Restaurante

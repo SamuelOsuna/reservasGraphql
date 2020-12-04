@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.samuel.reservasServidorGraphql.errors.CustomError;
 import com.samuel.reservasServidorGraphql.model.Restaurante;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UsuarioService {
 	private UsuarioDao usuarioDao;
 
 	@Transactional(readOnly = true)
-	public List<Usuario> usuariosPorNombre(String nombre) throws NotFoundException{
+	public List<Usuario> usuariosPorNombre(String nombre){
 		List<Usuario> finalUsuarios = new ArrayList<>();
 		usuarioDao.findAll().forEach(usuario -> {
 			if (usuario.getNombre().equalsIgnoreCase(nombre)){
@@ -32,7 +33,7 @@ public class UsuarioService {
 		if (finalUsuarios != null && !finalUsuarios.isEmpty()){
 			return finalUsuarios;
 		} else {
-			throw new NotFoundException("No se ha encontrado ningún usuario con el nombre: " + nombre);
+			throw new CustomError("No se ha encontrado ningún usuario con el nombre: " + nombre);
 		}
 
 	}
@@ -72,7 +73,7 @@ public class UsuarioService {
 	}
 
 	@Transactional
-	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen, String telefono) throws NotFoundException {
+	public Usuario updateUsuario(int id, String nombre, String email, String contrasena, String imagen, String telefono){
 		Usuario usuario = new Usuario();
 		Optional<Usuario> optUsuario = usuarioDao.findById(id);
 
@@ -96,7 +97,7 @@ public class UsuarioService {
 			usuarioDao.save(usuario);
 			return usuario;
 		}else{
-			throw new NotFoundException("No se ha encontrado el usuario");
+			throw new CustomError("No se ha encontrado el usuario");
 		}
 	}
 }

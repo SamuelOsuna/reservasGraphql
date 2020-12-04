@@ -3,6 +3,7 @@ package com.samuel.reservasServidorGraphql.resolver;
 import java.util.List;
 import java.util.Set;
 
+import com.samuel.reservasServidorGraphql.errors.CustomError;
 import com.samuel.reservasServidorGraphql.model.Mesa;
 import com.samuel.reservasServidorGraphql.model.Reserva;
 import com.samuel.reservasServidorGraphql.model.Restaurante;
@@ -44,62 +45,62 @@ public class Query implements GraphQLQueryResolver {
 	}
 
 	//Métodos de Restaurante
-	public List<Restaurante> restaurantes() throws Exception {
+	public List<Restaurante> restaurantes() throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return restauranteService.getRestaurantes();
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public Restaurante restaurante(int id) throws Exception {
+	public Restaurante restaurante(int id) throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return restauranteService.restaurantePorId(id);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
 	//Métodos de Usuario
-	public List<Usuario> usuariosPorNombre(String nombre) throws Exception {
+	public List<Usuario> usuariosPorNombre(String nombre) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return usuarioService.usuariosPorNombre(nombre);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public Usuario usuario(int id) throws Exception {
+	public Usuario usuario(int id) throws CustomError {
 		if(keyService.compruebaKey(getApiKey())){
 			return usuarioService.usuarioPorId(id);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
 	//Métodos de Reserva
-	public List<Reserva> reservasPorUsuario(int id_usuario) throws Exception {
+	public List<Reserva> reservasPorUsuario(int id_usuario) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return reservaService.reservasPorUsuario(id_usuario);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
-	public List<Reserva> reservasPorRestaurante(int id_restaurante) throws Exception {
+	public List<Reserva> reservasPorRestaurante(int id_restaurante) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return reservaService.reservasPorRestaurante(id_restaurante);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 
 	//Métodos de Mesa
-	public List<Mesa> mesasPorRestaurante(int id_restaurante) throws Exception {
+	public List<Mesa> mesasPorRestaurante(int id_restaurante) throws CustomError, NotFoundException {
 		if(keyService.compruebaKey(getApiKey())){
 			return mesaService.mesasPorRestaurante(id_restaurante);
 		} else {
-			throw new Exception("No tiene permisos para acceder a este método");
+			throw new CustomError("No tiene permisos para acceder a este método");
 		}
 	}
 }
